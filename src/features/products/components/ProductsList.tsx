@@ -3,6 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "@/features/products/actions";
 import { Product } from "@/features/products/types";
+import { ProductItem } from "./ProductItem";
 
 export function ProductsList() {
     const { data, isLoading, error } = useQuery({
@@ -16,10 +17,7 @@ export function ProductsList() {
     return (
         <div>
             {data?.products?.map((product: Product) => (
-                <div key={product.id}>
-                    <h3>{product.title}</h3>
-                    <p>${product.price}</p>
-                </div>
+                <ProductItem key={product.id} />
             ))}
         </div>
     );
