@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "@/features/products/actions";
 import { Product } from "@/features/products/types";
 import { ProductItem } from "./ProductItem";
+import styles from "./ProductsList.module.scss";
 
 export function ProductsList() {
     const { data, isLoading, error } = useQuery({
@@ -15,7 +16,7 @@ export function ProductsList() {
     if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <div>
+        <div className={styles["products-list"]}>
             {data?.products?.map((product: Product) => (
                 <ProductItem key={product.id} product={product} />
             ))}

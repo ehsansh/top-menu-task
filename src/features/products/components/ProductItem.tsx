@@ -18,21 +18,29 @@ export const ProductItem = ({ product }: ProductItemProps) => {
             {discountPercentage && (
                 <div className={styles["product-card__discount"]}>
                     <span className={styles["product-card__discount-percent"]}>
-                        %{discountPercentage}
+                        %{Math.floor(discountPercentage)}
                     </span>
                     <span className={styles["product-card__discount-text"]}>
                         تخفیف
                     </span>
                 </div>
             )}
-
-            <Image
-                src={thumbnail}
-                alt={title}
-                className={styles["product-card__thumbnail"]}
-                width={200}
-                height={200}
-            />
+            <div>
+                <Image
+                    src={thumbnail}
+                    alt={title}
+                    className={styles["product-card__thumbnail"]}
+                    width={240}
+                    height={240}
+                />
+                <div className={styles["product-card__actions"]}>
+                    <button className="minus">−</button>
+                    <span className={styles["product-card__actions-count"]}>
+                        2
+                    </span>
+                    <button className="plus">+</button>
+                </div>
+            </div>
 
             <div className={styles["product-card__content"]}>
                 <h2 className={styles["product-card__title"]}>{title}</h2>
@@ -44,19 +52,14 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                 <div className={styles["product-card__prices"]}>
                     {discountPercentage && (
                         <p className={styles["product-card__old-price"]}>
-                            {price.toLocaleString()} تومان
+                            {price}
+                            تومان
                         </p>
                     )}
                     <p className={styles["product-card__new-price"]}>
-                        {finalPrice.toLocaleString()} تومان
+                        {finalPrice} تومان
                     </p>
                 </div>
-            </div>
-
-            <div className={styles["product-card__actions"]}>
-                <button className="minus">−</button>
-                <span className={styles["product-card__actions-count"]}>2</span>
-                <button className="plus">+</button>
             </div>
         </div>
     );

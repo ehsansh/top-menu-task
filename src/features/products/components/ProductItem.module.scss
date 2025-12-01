@@ -1,11 +1,11 @@
 .product-card {
     background-color: #241c22;
     border-radius: 20px;
-    padding: 16px;
+    padding: 16px 12px;
     margin-bottom: 20px;
     position: relative;
     display: flex;
-    gap: 16px;
+    gap: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     &__discount {
         position: absolute;
@@ -40,51 +40,16 @@
         flex-shrink: 0;
     }
 
-    &__content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    &__title {
-        font-size: 20px;
-        font-weight: 900;
-        color: #ffffff;
-        margin-bottom: 4px;
-    }
-
-    &__description {
-        font-size: 14px;
-        color: #b3b3b3;
-        line-height: 1.5;
-        max-height: 45px;
-        overflow: hidden;
-    }
-
-    &__prices {
-        margin-top: 8px;
-    }
-
-    &__old-price {
-        text-decoration: line-through;
-        color: #a0a0a0;
-        font-size: 14px;
-        margin-bottom: 4px;
-    }
-
-    &__new-price {
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: bold;
-    }
     &__actions {
+        margin-top: -24px;
+        z-index: 10;
+        position: relative;
         display: flex;
         align-items: center;
         background-color: #d83377;
         border-radius: 16px;
         padding: 6px 10px;
-        gap: 12px;
+        gap: 8px;
         align-self: flex-end;
 
         button {
@@ -113,5 +78,44 @@
             min-width: 20px;
             text-align: center;
         }
+    }
+
+    &__content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-size: 14px;
+        font-weight: 900;
+        color: #ffffff;
+        margin-bottom: 4px;
+    }
+
+    &__description {
+        font-size: 13px;
+        color: #b3b3b3;
+        line-height: 1.5;
+    }
+
+    &__prices {
+        margin-top: 8px;
+        text-align: left;
+    }
+
+    &__old-price {
+        text-decoration: line-through;
+        color: #a0a0a0;
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    &__new-price {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 3px;
     }
 }
