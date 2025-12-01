@@ -17,7 +17,7 @@ export function ProductsList() {
     return (
         <div>
             {data?.products?.map((product: Product) => (
-                <ProductItem key={product.id} />
+                <ProductItem key={product.id} product={product} />
             ))}
         </div>
     );
