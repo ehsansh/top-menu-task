@@ -20,15 +20,20 @@ export const ProductActions = ({ product }: ProductItemProps) => {
             <button className="plus" onClick={() => addToCart(product)}>
                 +
             </button>
+            {quantity > 0 && (
+                <>
+                    <span className={styles["product-actions-count"]}>
+                        {quantity}
+                    </span>
 
-            <span className={styles["product-actions-count"]}>{quantity}</span>
-
-            <button
-                className="minus"
-                onClick={() => removeFromCart(product.id)}
-            >
-                −
-            </button>
+                    <button
+                        className="minus"
+                        onClick={() => removeFromCart(product.id)}
+                    >
+                        −
+                    </button>
+                </>
+            )}
         </div>
     );
 };

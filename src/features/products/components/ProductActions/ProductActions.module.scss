@@ -1,8 +1,8 @@
 .product-actions {
-    width: 110px;
-    margin-top: -24px;
+    top: 110px;
+    right: 21px;
     z-index: 10;
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -16,16 +16,11 @@
         height: 30px;
         border: none;
         border-radius: 10px;
-        background-color: #000;
+        background-color: #d83377;
         color: #fff;
-        font-size: 18px;
+        font-size: 20px;
         cursor: pointer;
-
-        &.minus {
-            background-color: #000;
-        }
-
-        &.plus {
+        &:hover {
             background-color: #000;
         }
     }
@@ -35,5 +30,6 @@
         color: #fff;
         min-width: 20px;
         text-align: center;
+        margin: 0 6px;
     }
 }
