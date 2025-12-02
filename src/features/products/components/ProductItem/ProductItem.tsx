@@ -1,6 +1,7 @@
 import styles from "./ProductItem.module.scss";
 import { Product } from "@/features/products/types";
 import Image from "next/image";
+import { ProductActions } from "@/features/products/components/ProductActions/ProductActions";
 
 interface ProductItemProps {
     product: Product;
@@ -33,13 +34,7 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                     width={240}
                     height={240}
                 />
-                <div className={styles["product-card__actions"]}>
-                    <button className="plus">+</button>
-                    <span className={styles["product-card__actions-count"]}>
-                        2
-                    </span>
-                    <button className="minus">−</button>
-                </div>
+                <ProductActions />
             </div>
 
             <div className={styles["product-card__content"]}>
