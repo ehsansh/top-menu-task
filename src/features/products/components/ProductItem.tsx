@@ -46,7 +46,8 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                 <h2 className={styles["product-card__title"]}>{title}</h2>
 
                 <p className={styles["product-card__description"]}>
-                    {description}
+                    {description.substring(0, 60)}
+                    ...
                 </p>
 
                 <div className={styles["product-card__prices"]}>
