@@ -5,15 +5,25 @@ export interface CartStore {
     items: CartItem[];
     totalCount: number;
     totalPrice: number;
-    addToCart?: (product: Product) => void;
-    removeFromCart?: (id: number) => void;
-    clearCart?: () => void;
+    addToCart: (product: Product) => void;
+    removeFromCart: (id: number) => void;
+    clearCart: () => void;
 }
+
+const calculateTotals = (items: CartItem[]) => {
+    const totalCount = items.reduce((acc, item) => acc + item.quantity, 0);
+    const totalPrice = items.reduce((acc, item) => {
+        const price = item.price * (1 - (item.discountPercentage || 0) / 100);
+        return acc + price * item.quantity;
+    }, 0);
+    return { totalCount, totalPrice };
+};
 
 export const useCartStore = create<CartStore>((set) => ({
     items: [],
     totalCount: 0,
     totalPrice: 0,
+
     addToCart: (product: Product) =>
         set((state) => {
             const existingItemIndex = state.items.findIndex(
@@ -36,20 +46,43 @@ export const useCartStore = create<CartStore>((set) => ({
                 newItems = [...state.items, newItem];
             }
 
-            const newTotalCount = newItems.reduce(
-                (acc, item) => acc + item.quantity,
-                0
-            );
+            const { totalCount, totalPrice } = calculateTotals(newItems);
 
-            const newTotalPrice = newItems.reduce((acc, item) => {
-                const price =
-                    item.price * (1 - (item.discountPercentage || 0) / 100);
-                return acc + price * item.quantity;
-            }, 0);
             return {
                 items: newItems,
-                totalCount: newTotalCount,
-                totalPrice: newTotalPrice,
+                totalCount: totalCount,
+                totalPrice: totalPrice,
             };
         }),
+
+    removeFromCart: (id: number) =>
+        set((state) => {
+            const existingItem = state.items.find((item) => item.id === id);
+
+            if (!existingItem) {
+                return state;
+            }
+
+            let newItems: CartItem[];
+
+            if (existingItem.quantity > 1) {
+                newItems = state.items.map((item) =>
+                    item.id === id
+                        ? { ...item, quantity: item.quantity - 1 }
+                        : item
+                );
+            } else {
+                newItems = state.items.filter((item) => item.id !== id);
+            }
+
+            const { totalCount, totalPrice } = calculateTotals(newItems);
+
+            return {
+                items: newItems,
+                totalCount: totalCount,
+                totalPrice: totalPrice,
+            };
+        }),
+
+    clearCart: () => set({ items: [], totalCount: 0, totalPrice: 0 }),
 }));
