@@ -1,4 +1,5 @@
 import { ProductsList } from "../ProductsList/ProductsList";
+import Cart from "@/features/cart/components/Cart";
 import {
     QueryClient,
     dehydrate,
@@ -14,8 +15,11 @@ export async function ProductsListWrapper() {
     });
 
     return (
-        <HydrationBoundary state={dehydrate(queryClient)}>
-            <ProductsList />
-        </HydrationBoundary>
+        <>
+            <HydrationBoundary state={dehydrate(queryClient)}>
+                <ProductsList />
+            </HydrationBoundary>
+            <Cart />
+        </>
     );
 }
