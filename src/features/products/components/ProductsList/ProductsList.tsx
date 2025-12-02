@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "@/features/products/actions";
 import { Product } from "@/features/products/types";
-import { ProductItem } from "./ProductItem";
+import { ProductItem } from "../ProductItem/ProductItem";
 import styles from "./ProductsList.module.scss";
 
 export function ProductsList() {

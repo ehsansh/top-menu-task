@@ -1,4 +1,4 @@
-import { ProductsList } from "./ProductsList";
+import { ProductsList } from "../ProductsList/ProductsList";
 import {
     QueryClient,
     dehydrate,
