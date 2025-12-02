@@ -34,11 +34,11 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                     height={240}
                 />
                 <div className={styles["product-card__actions"]}>
-                    <button className="minus">−</button>
+                    <button className="plus">+</button>
                     <span className={styles["product-card__actions-count"]}>
                         2
                     </span>
-                    <button className="plus">+</button>
+                    <button className="minus">−</button>
                 </div>
             </div>
 

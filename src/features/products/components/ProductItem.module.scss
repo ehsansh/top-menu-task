@@ -36,27 +36,27 @@
         width: 120px;
         height: 120px;
         border-radius: 16px;
-        object-fit: cover;
-        flex-shrink: 0;
     }
 
     &__actions {
+        width: 110px;
         margin-top: -24px;
         z-index: 10;
         position: relative;
         display: flex;
+        justify-content: space-around;
         align-items: center;
         background-color: #d83377;
-        border-radius: 16px;
-        padding: 6px 10px;
-        gap: 8px;
+        border-radius: 10px;
+        padding: 4px 5px;
+        box-sizing: border-box;
         align-self: flex-end;
 
         button {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border: none;
-            border-radius: 50%;
+            border-radius: 10px;
             background-color: #000;
             color: #fff;
             font-size: 18px;
