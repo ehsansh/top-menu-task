@@ -1,5 +1,5 @@
 import styles from "./ProductActions.module.scss";
-import { Product } from "@/features/products/types";
+import { Product } from "@/shared/types";
 import { useCartStore } from "@/features/cart/store/useCartStore";
 import { Activity } from "react";
 

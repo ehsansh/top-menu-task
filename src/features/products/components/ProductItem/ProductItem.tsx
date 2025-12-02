@@ -1,5 +1,5 @@
 import styles from "./ProductItem.module.scss";
-import { Product } from "@/features/products/types";
+import { Product } from "@/shared/types";
 import Image from "next/image";
 import { ProductActions } from "@/features/products/components/ProductActions/ProductActions";
 
