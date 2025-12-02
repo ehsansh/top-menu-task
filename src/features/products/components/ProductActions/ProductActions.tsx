@@ -1,6 +1,7 @@
 import styles from "./ProductActions.module.scss";
 import { Product } from "@/features/products/types";
 import { useCartStore } from "@/features/cart/store/useCartStore";
+import { Activity } from "react";
 
 interface ProductItemProps {
     product: Product;
@@ -20,20 +21,18 @@ export const ProductActions = ({ product }: ProductItemProps) => {
             <button className="plus" onClick={() => addToCart(product)}>
                 +
             </button>
-            {quantity > 0 && (
-                <>
-                    <span className={styles["product-actions-count"]}>
-                        {quantity}
-                    </span>
+            <Activity mode={quantity > 0 ? "visible" : "hidden"}>
+                <span className={styles["product-actions-count"]}>
+                    {quantity}
+                </span>
 
-                    <button
-                        className="minus"
-                        onClick={() => removeFromCart(product.id)}
-                    >
-                        −
-                    </button>
-                </>
-            )}
+                <button
+                    className="minus"
+                    onClick={() => removeFromCart(product.id)}
+                >
+                    −
+                </button>
+            </Activity>
         </div>
     );
 };
