@@ -2,6 +2,7 @@ import styles from "./ProductItem.module.scss";
 import { Product } from "@/shared/types";
 import Image from "next/image";
 import { ProductActions } from "@/features/products/components/ProductActions/ProductActions";
+import { Activity } from "react";
 
 interface ProductItemProps {
     product: Product;
@@ -16,16 +17,26 @@ export const ProductItem = ({ product }: ProductItemProps) => {
 
     return (
         <div className={styles["product-card"]}>
-            {discountPercentage && (
+            <Activity
+                mode={
+                    discountPercentage && Math.floor(discountPercentage) > 0
+                        ? "visible"
+                        : "hidden"
+                }
+            >
                 <div className={styles["product-card__discount"]}>
                     <span className={styles["product-card__discount-percent"]}>
-                        %{Math.floor(discountPercentage)}
+                        %
+                        {Math.floor(discountPercentage!).toLocaleString(
+                            "fa-IR"
+                        )}
                     </span>
                     <span className={styles["product-card__discount-text"]}>
                         تخفیف
                     </span>
                 </div>
-            )}
+            </Activity>
+
             <div>
                 <Image
                     src={thumbnail}
