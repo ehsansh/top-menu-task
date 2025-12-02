@@ -34,7 +34,7 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                     width={240}
                     height={240}
                 />
-                <ProductActions />
+                <ProductActions product={product} />
             </div>
 
             <div className={styles["product-card__content"]}>

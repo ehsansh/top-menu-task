@@ -13,7 +13,12 @@ export interface CartStore {
 const calculateTotals = (items: CartItem[]) => {
     const totalCount = items.reduce((acc, item) => acc + item.quantity, 0);
     const totalPrice = items.reduce((acc, item) => {
-        const price = item.price * (1 - (item.discountPercentage || 0) / 100);
+        const price = item.discountPercentage
+            ? Math.floor(
+                  item.price - (item.price * item.discountPercentage) / 100
+              )
+            : item.price;
+
         return acc + price * item.quantity;
     }, 0);
     return { totalCount, totalPrice };

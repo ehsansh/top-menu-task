@@ -1,11 +1,34 @@
 import styles from "./ProductActions.module.scss";
+import { Product } from "@/features/products/types";
+import { useCartStore } from "@/features/cart/store/useCartStore";
 
-export const ProductActions = () => {
+interface ProductItemProps {
+    product: Product;
+}
+
+export const ProductActions = ({ product }: ProductItemProps) => {
+    const addToCart = useCartStore((state) => state.addToCart);
+    const removeFromCart = useCartStore((state) => state.removeFromCart);
+
+    const quantity = useCartStore(
+        (state) =>
+            state.items.find((item) => item.id === product.id)?.quantity || 0
+    );
+
     return (
         <div className={styles["product-actions"]}>
-            <button className="plus">+</button>
-            <span className={styles["product-actions-count"]}>2</span>
-            <button className="minus">−</button>
+            <button className="plus" onClick={() => addToCart(product)}>
+                +
+            </button>
+
+            <span className={styles["product-actions-count"]}>{quantity}</span>
+
+            <button
+                className="minus"
+                onClick={() => removeFromCart(product.id)}
+            >
+                −
+            </button>
         </div>
     );
 };
