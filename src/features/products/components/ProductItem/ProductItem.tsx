@@ -48,12 +48,12 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                 <div className={styles["product-card__prices"]}>
                     {discountPercentage && (
                         <p className={styles["product-card__old-price"]}>
-                            {price}
+                            {price.toLocaleString("fa-IR")}
                             تومان
                         </p>
                     )}
                     <p className={styles["product-card__new-price"]}>
-                        {finalPrice} تومان
+                        {finalPrice.toLocaleString("fa-IR")} تومان
                     </p>
                 </div>
             </div>

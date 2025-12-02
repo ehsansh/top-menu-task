@@ -6,6 +6,8 @@ export default function Cart() {
     const totalCount = useCartStore((state) => state.totalCount);
     const totalPrice = useCartStore((state) => state.totalPrice);
 
+    if (totalCount === 0) return null;
+
     return (
         <div className={styles.cart}>
             <div className={styles.cart__inner}>
