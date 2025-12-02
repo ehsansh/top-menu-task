@@ -37,3 +37,7 @@ export interface Product {
     images: string[];
     thumbnail: string;
 }
+
+export interface CartItem extends Product {
+    quantity: number;
+}
