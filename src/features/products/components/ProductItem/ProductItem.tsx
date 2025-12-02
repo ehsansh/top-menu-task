@@ -15,15 +15,12 @@ export const ProductItem = ({ product }: ProductItemProps) => {
         ? Math.floor(price - (price * discountPercentage) / 100)
         : price;
 
+    const hasDiscount =
+        discountPercentage && Math.floor(discountPercentage) > 0;
+
     return (
         <div className={styles["product-card"]}>
-            <Activity
-                mode={
-                    discountPercentage && Math.floor(discountPercentage) > 0
-                        ? "visible"
-                        : "hidden"
-                }
-            >
+            <Activity mode={hasDiscount ? "visible" : "hidden"}>
                 <div className={styles["product-card__discount"]}>
                     <span className={styles["product-card__discount-percent"]}>
                         %
@@ -57,12 +54,13 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                 </p>
 
                 <div className={styles["product-card__prices"]}>
-                    {discountPercentage && (
+                    <Activity mode={hasDiscount ? "visible" : "hidden"}>
                         <p className={styles["product-card__old-price"]}>
-                            {price.toLocaleString("fa-IR")}
+                            {Math.floor(price).toLocaleString("fa-IR")}
                             تومان
                         </p>
-                    )}
+                    </Activity>
+
                     <p className={styles["product-card__new-price"]}>
                         {finalPrice.toLocaleString("fa-IR")} تومان
                     </p>
