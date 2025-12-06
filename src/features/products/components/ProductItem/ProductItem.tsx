@@ -33,37 +33,49 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                     </span>
                 </div>
             </Activity>
+            <Activity mode={product.images.length > 1 ? "visible" : "hidden"}>
+                <div className={styles["product-card__hero-image-wrapper"]}>
+                    <Image
+                        src={product.images[0]}
+                        alt={`${title} banner`}
+                        className={styles["product-card__hero-image"]}
+                        width={500}
+                        height={150}
+                    />
+                </div>
+            </Activity>
 
-            <div>
-                <Image
-                    src={thumbnail}
-                    alt={title}
-                    className={styles["product-card__thumbnail"]}
-                    width={240}
-                    height={240}
-                />
-                <ProductActions product={product} />
-            </div>
+            <div className={styles["product-card__content-row"]}>
+                <div className={styles["product-card__thumbnail-wrap"]}>
+                    <Image
+                        src={thumbnail}
+                        alt={title}
+                        className={styles["product-card__thumbnail"]}
+                        width={240}
+                        height={240}
+                    />
+                    <ProductActions product={product} />
+                </div>
+                <div className={styles["product-card__content"]}>
+                    <h2 className={styles["product-card__title"]}>{title}</h2>
 
-            <div className={styles["product-card__content"]}>
-                <h2 className={styles["product-card__title"]}>{title}</h2>
-
-                <p className={styles["product-card__description"]}>
-                    {description.substring(0, 60)}
-                    ...
-                </p>
-
-                <div className={styles["product-card__prices"]}>
-                    <Activity mode={hasDiscount ? "visible" : "hidden"}>
-                        <p className={styles["product-card__old-price"]}>
-                            {Math.floor(price).toLocaleString("fa-IR")}
-                            تومان
-                        </p>
-                    </Activity>
-
-                    <p className={styles["product-card__new-price"]}>
-                        {finalPrice.toLocaleString("fa-IR")} تومان
+                    <p className={styles["product-card__description"]}>
+                        {description.substring(0, 60)}
+                        ...
                     </p>
+
+                    <div className={styles["product-card__prices"]}>
+                        <Activity mode={hasDiscount ? "visible" : "hidden"}>
+                            <p className={styles["product-card__old-price"]}>
+                                {Math.floor(price).toLocaleString("fa-IR")}
+                                تومان
+                            </p>
+                        </Activity>
+
+                        <p className={styles["product-card__new-price"]}>
+                            {finalPrice.toLocaleString("fa-IR")} تومان
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
