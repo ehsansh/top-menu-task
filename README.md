@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Product List & Shopping Cart Task (Next.js)
 
-## Getting Started
+**Demo Link (Vercel):** [https://top-menu-task1.vercel.app/](https://top-menu-task1.vercel.app/)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 Project Goals
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project implements a responsive (mobile-first) product listing page with a sticky shopping cart, based on the requirements of the technical interview task.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Key Requirements Implemented:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Item | Requirement                                                                                                                                                                     | Status |
+| :--: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----: |
+|  1   | **Framework:** Must be implemented using **Next.js**.                                                                                                                           |   ✅   |
+|  2   | **API Call:** API data fetching from `https://dummyjson.com/products` must be done on the **server side** (Server Components).                                                  |   ✅   |
+|  3   | **Caching & State Management:** Must use **React Query (TanStack Query)** for request management and proper data caching.                                                       |   ✅   |
+|  4   | **Product Card:** Design must closely resemble attached images, using fields: `title`, `description`, `thumbnail`, `price`, `discountPercentage`.                               |   ✅   |
+|  5   | **Discount Tag:** Display a red discount tag with the percentage if `discountPercentage` exists.                                                                                |   ✅   |
+|  6   | **Image Slider:** Implementation of a slideshow component for the main card image (full width) if the product has multiple images in the `images` array. (Bonus point achieved) |   ✅   |
+|  7   | **Cart Functionality:** Ability to add and remove products from the shopping cart.                                                                                              |   ✅   |
+|  8   | **Cart Display:** Shopping cart must be displayed as a **Sticky** bar at the bottom of the page (only if the cart is not empty).                                                |   ✅   |
+|  9   | **Responsiveness:** Development focused exclusively on **mobile size**.                                                                                                         |   ✅   |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🏗️ Architecture and Technologies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **Core Technologies:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js (App Router):** The main project framework, leveraging Server Components.
+- **React Query (TanStack Query):** Used for managing Server State, caching product data, and optimizing API calls.
+- **TypeScript:** Ensures strong typing and robust code quality.
+- **SCSS Modules:** Used for modular styling following the **BEM Methodology**.
+- **Zustand:** Used for efficient and simple Global State Management (Cart State).
 
-## Deploy on Vercel
+### **Feature-Based Architecture:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project utilizes a **Feature-Based Architecture** to ensure high maintainability and scalability.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Setup Instructions
+
+To run the project locally, follow these steps:
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/ehsansh/top-menu-task
+    cd top-menu-task
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+
+The application will be accessible at `http://localhost:3000`.
