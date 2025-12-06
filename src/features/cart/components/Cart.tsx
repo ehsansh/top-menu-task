@@ -11,7 +11,9 @@ export default function Cart() {
     return (
         <div className={styles.cart}>
             <div className={styles.cart__inner}>
-                <span className={styles.cart__count}>{totalCount}</span>
+                <span className={styles.cart__count}>
+                    {totalCount.toLocaleString("fa-IR")}
+                </span>
                 <span className={styles.cart__text}>تکمیل خرید</span>
                 <span className={styles.cart__price}>
                     {totalPrice.toLocaleString("fa-IR")} تومان

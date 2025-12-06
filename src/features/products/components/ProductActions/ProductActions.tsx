@@ -23,7 +23,7 @@ export const ProductActions = ({ product }: ProductItemProps) => {
             </button>
             <Activity mode={quantity > 0 ? "visible" : "hidden"}>
                 <span className={styles["product-actions-count"]}>
-                    {quantity}
+                    {quantity.toLocaleString("fa-IR")}
                 </span>
 
                 <button

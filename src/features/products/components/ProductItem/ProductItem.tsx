@@ -2,6 +2,7 @@ import styles from "./ProductItem.module.scss";
 import { Product } from "@/shared/types";
 import Image from "next/image";
 import { ProductActions } from "@/features/products/components/ProductActions/ProductActions";
+import { ProductSlideshow } from "@/features/products/components/ProductSlideshow/ProductSlideshow";
 import { Activity } from "react";
 
 interface ProductItemProps {
@@ -9,7 +10,7 @@ interface ProductItemProps {
 }
 
 export const ProductItem = ({ product }: ProductItemProps) => {
-    const { title, description, price, discountPercentage, thumbnail } =
+    const { title, description, price, discountPercentage, thumbnail, images } =
         product;
     const finalPrice = discountPercentage
         ? Math.floor(price - (price * discountPercentage) / 100)
@@ -33,14 +34,11 @@ export const ProductItem = ({ product }: ProductItemProps) => {
                     </span>
                 </div>
             </Activity>
-            <Activity mode={product.images.length > 1 ? "visible" : "hidden"}>
-                <div className={styles["product-card__hero-image-wrapper"]}>
-                    <Image
-                        src={product.images[0]}
-                        alt={`${title} banner`}
-                        className={styles["product-card__hero-image"]}
-                        width={500}
-                        height={150}
+            <Activity mode={images.length > 1 ? "visible" : "hidden"}>
+                <div className={styles["product-card__slider-wrapper"]}>
+                    <ProductSlideshow
+                        productImages={images}
+                        productTitle={title}
                     />
                 </div>
             </Activity>
